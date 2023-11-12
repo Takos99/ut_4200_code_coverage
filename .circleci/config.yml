@@ -16,9 +16,9 @@ jobs:
           name: Generate Code Coverage Report
           command: npm run coverage
       - store_test_results:
-          path: .circleci/test-results
+          path: test-results
       - store_artifacts:
-          path: .circleci/coverage
+          path: coverage
 
 workflows:
   calculator:

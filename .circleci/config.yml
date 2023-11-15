@@ -19,9 +19,9 @@ jobs:
           name: Make artifact directories
           command: mkdir -p $TEST-RESULTS $ARTIFACTS
       - store_test_results:
-          path: $TEST-RESULTS
+          path: .circleci/$TEST-RESULTS
       - store_artifacts:
-          path: $ARTIFACTS
+          path: .circleci/$ARTIFACTS
 
 workflows:
   version: 2.1

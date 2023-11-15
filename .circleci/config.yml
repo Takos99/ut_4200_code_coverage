@@ -15,10 +15,13 @@ jobs:
       - run:
           name: Generate Code Coverage Report
           command: npm run coverage
+      - run:
+          name: Make artifact directories
+          command: mkdir -p $TEST-RESULTS $ARTIFACTS
       - store_test_results:
-          path: .circleci/test-results
+          path: $TEST-RESULTS
       - store_artifacts:
-          path: .circleci/coverage
+          path: $ARTIFACTS
 
 workflows:
   version: 2.1

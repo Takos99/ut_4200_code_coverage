@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:16
+      - image: circleci/node:14
     steps:
       - checkout
       - run:
@@ -11,20 +11,16 @@ jobs:
           command: npm install
       - run:
           name: Run NPM Tests
-          command: npm run test:coverage
+          command: npm test
       - run:
           name: Generate Code Coverage Report
           command: npm run coverage
-      - run:
-          name: Make artifact directories
-          command: mkdir -p $TEST-RESULTS $ARTIFACTS
       - store_test_results:
-          path: .circleci/$TEST-RESULTS
+          path: .circleci/test-results
       - store_artifacts:
-          path: .circleci/$ARTIFACTS
+          path: .circleci/coverage
 
 workflows:
-  version: 2.1
   calculator:
     jobs:
       - build
